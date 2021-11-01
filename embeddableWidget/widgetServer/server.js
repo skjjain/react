@@ -11,4 +11,6 @@ app.use(function (req, res, next) {
 });
 app.use("/", express.static(path.join(__dirname, "build")));
 
-app.listen("4000");
+app.listen("4000", function(){
+  console.log("Widget server started running at 4000 port")
+});
