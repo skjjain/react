@@ -1,3 +1,4 @@
+import './App.css'
 export default function App(){
-    return <div>Hello World!!!</div>
+    return <div id="embeddedWidget">Hello World!!!</div>
 }
