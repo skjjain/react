@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script></script>
+  </head>
+  <body>
+    <div id="app-root"></div>
+    <script>
+      let loginServer = "http://localhost:4000/";
+      var loginElementId = "app-root";
+      fetch(loginServer+"asset-manifest.json").then(function(t){200===t.status?t.json().then(function(t){t.entrypoints.forEach(t=>{!function(t){const e=document.createElement("script");e.setAttribute("async",""),e.setAttribute("id","script-id"),e.src=t,document.querySelector("body").appendChild(e)}(loginServer+t)})}):console.log("Looks like there was a problem. Status Code: "+t.status)}).catch(function(t){console.log("Fetch Error :-S",t)});
+    </script>
+  </body>
+</html>
