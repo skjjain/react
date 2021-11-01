@@ -1,9 +1,19 @@
 #embeddedWidget {
-    border: 1px solid saddlebrown;
-    border-radius: 3px;
-    padding: 10px;
-    color: red;
-    h1 {
-        color: blue;
-    }
+  border: 1px solid saddlebrown;
+  border-radius: 3px;
+  padding: 10px;
+  color: red;
+  h1 {
+    color: blue;
+  }
+  h1:hover {
+    color: green;
+  }
+  .strikethrough {
+    text-decoration: line-through;
+  }
+}
+
+.widget-mouse-over {
+  border: 1px dotted green !important
 }
