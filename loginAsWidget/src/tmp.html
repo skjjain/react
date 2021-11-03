@@ -1,0 +1,228 @@
+<div className="form-group">
+  <div className="mat-input">
+    <div className="mat-input-outer">
+      <input
+        className="form-control filterInput"
+        id="first_name"
+        name="first_name"
+        maxlength="50"
+        minlength="1"
+        required=""
+        aria-required="true"
+      />
+      <label className="">Name</label>
+    </div>
+  </div>
+  <span
+    role="alert"
+    className="error-msg-login error_name"
+    style="display: none"
+  >
+    Please enter your name.{" "}
+  </span>
+</div>
+<div className="form-group">
+  <div className="mat-input">
+    <div className="mat-input-outer">
+      <input
+        className="form-control filterInput"
+        type="email"
+        id="email_id"
+        name="email_id"
+        required=""
+        aria-required="true"
+      />
+      <label className="">Email</label>
+    </div>
+  </div>
+  <span
+    role="alert"
+    className="error-msg-login error_email"
+    style="display: none"
+  >
+    Please enter your email.{" "}
+  </span>
+</div>
+<div className="form-group mobSumo">
+  <div className="mat-input">
+    <div className="mat-input-outer">
+      <select
+        className="form-control filterInput"
+        name="user_city"
+        id="user_city"
+        title="Please Select City"
+        tabindex="8"
+        required=""
+        aria-required="true"
+      >
+        <option value="">Select a City</option>
+        <option value="51">Ahmedabad</option>
+        <option value="105">Bangalore</option>
+        <option value="42">Chandigarh</option>
+        <option value="280">Chennai</option>
+        <option value="74">Gurgaon</option>
+        <option value="8">Hyderabad</option>
+        <option value="269">Jaipur</option>
+        <option value="338">Kolkata</option>
+        <option value="201">Mumbai</option>
+        <option value="49">New Delhi</option>
+        <option value="205">Pune</option>
+      </select>
+      <label className="active-o">City</label>
+    </div>
+  </div>
+  <span
+    role="alert"
+    className="error-msg-login error_city"
+    style="display: none"
+  >
+    Please select city.{" "}
+  </span>
+</div>
+<input type="hidden" value="" name="user_city_name" id="user_city_name" />
+<div className="form-group">
+  <div className="mat-input">
+    <div className="mat-input-outer">
+      <div
+        className="edit_mobile_number"
+        style="
+          position: absolute;
+          right: 15px;
+          z-index: 999;
+          color: #e66437;
+          font-size: 12px;
+          margin-top: 11px;
+          cursor: pointer;
+          display: none;
+        "
+      >
+        Edit
+      </div>
+      <input type="text" style="display: none" />
+      <input
+        className="form-control filterInput onlyNumbers"
+        type="tel"
+        pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+        name="phone_no"
+        id="phone_no"
+        maxlength="10"
+        required=""
+        aria-required="true"
+      />
+      <label className="">Mobile Number</label>
+    </div>
+  </div>
+  <span
+    role="alert"
+    className="error-msg-login error_mobile_number"
+    style="display: none"
+  >
+    Please enter your Mobile Number.{" "}
+  </span>
+</div>
+<div className="form-group otp_container" style="display: none">
+  <div className="mat-input">
+    <div className="mat-input-outer">
+      <div
+        className="resend_otp"
+        style="
+          position: absolute;
+          right: 15px;
+          z-index: 999;
+          color: #e66437;
+          font-size: 12px;
+          margin-top: 11px;
+          cursor: pointer;
+        "
+      >
+        Resend OTP
+      </div>
+      <input type="password" style="display: none" />
+      <input
+        className="login-field  login-field-password"
+        name="otp"
+        id="otp"
+        type="password"
+        autocomplete="off"
+      />
+      <label className="">OTP</label>
+    </div>
+  </div>
+  <span
+    role="alert"
+    className="error-msg-login error_otp"
+    style="display: none"
+  >
+    Please enter your OTP.{" "}
+  </span>
+  <span
+    role="alert"
+    className="error-msg-login otp_message"
+    style="color: #a2a2a1"
+  >
+    OTP is valid for 15 minutes.
+  </span>
+</div>
+<div className="form-group config-chk margin-bottom-0" style="display: block">
+  <span className="d-flex positionleft">
+    <input type="hidden" value="0" name="isCommChk" id="isCommChk" />
+    <input
+      type="checkbox"
+      name="is_comm_chk"
+      id="is_comm_chk"
+      value="0"
+      className="trigger inputAbs"
+      data-rel=""
+      tabindex="12"
+    />
+    <label for="is_comm_chk">
+      <span className="dt-yes"></span>Communicate on WhatsApp{" "}
+      <img
+        src="http://poslocal.insurancedekho.com/public/b2c/zigwheels/img/ic_whatsapp.png"
+        alt=""
+        width="24"
+      />
+    </label>
+  </span>
+</div>
+<button className="btn btn-id" id="join_now" style="margin-top: 10px">
+  Join Now &nbsp;{" "}
+  <img
+    src="http://poslocal.insurancedekho.com/public/b2c/zigwheels/img/arrow.svg"
+  />
+</button>
+<p className="mrg-t font-14">
+  Already Registered?{" "}
+  <a href="javascript:void(0)" id="loginPageUrl"> Login Now </a>
+</p>
+<div
+  role="alert"
+  className="logging_in clearfix"
+  style="
+    display: none;
+    text-align: center;
+    line-height: 30px;
+    color: #3c763d;
+    font-weight: 100;
+  "
+>
+  Logging in...
+</div>
+<div
+  role="alert"
+  className="sending_otp clearfix"
+  style="
+    display: none;
+    text-align: center;
+    line-height: 30px;
+    color: #3c763d;
+    font-weight: 100;
+  "
+>
+  Sending OTP...
+</div>
+<div
+  role="alert"
+  className="error-msg-login error_login clearfix"
+  style="display: none; text-align: center; line-height: 30px; color: red"
+></div>
