@@ -1,9 +1,19 @@
+import React, { useState, useEffect } from 'react';
+
 import "./App.scss";
 export default function App() {
+
+  const [name, setName] = useState()
+
+  function nameOnChange(e){
+    let val = e.target.value
+    setName(val)
+  }
+
   return (
     <div id="embeddedWidget">
       <div className="box-main">
-        <h2>Register</h2>
+        <h2>Register {name && 'me as'} {name}</h2>
         <div className="form-group">
           <div className="mat-input">
             <div className="mat-input-outer">
@@ -16,6 +26,8 @@ export default function App() {
                 required=""
                 aria-required="true"
                 placeholder="Name"
+                value={name}
+                onChange={e => nameOnChange(e)}
               />
             </div>
           </div>
