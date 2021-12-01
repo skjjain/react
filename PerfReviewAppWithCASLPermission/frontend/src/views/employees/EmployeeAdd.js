@@ -1,0 +1,142 @@
+/**
+ * React Functional Component : "EmployeeAdd"
+ * Purpose : Renders employee creation form
+ * State Manager : EmployeeReducer
+ */
+
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import {
+  CSpinner,
+  CInput,
+  CRow,
+  CCol,
+  CCard,
+  CCardBody,
+  CForm,
+  CInputGroup,
+  CInputGroupPrepend,
+  CInputGroupText,
+  CButton,
+  CSelect,
+} from "@coreui/react";
+
+import CIcon from "@coreui/icons-react";
+import { renderEmployeeOptions } from "src/views/employees/common";
+
+import { useSelector, useDispatch } from "react-redux";
+import { addEmployeeInfo, unsetLastAddedEmployeeId } from "src/redux/actions";
+
+const Employee = () => {
+  const history = useHistory();
+  let waitForServer = useSelector(
+    (state) => state.EmployeeReducer.waitForServer
+  );
+
+  let lastAddedEmployeeId = useSelector(
+    (state) => state.EmployeeReducer.lastAddedEmployeeId
+  );
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+  let [role, setRole] = useState(2);
+
+  const dispatch = useDispatch();
+
+  let saveEmployeeInfo = () => {
+    if (waitForServer !== true) {
+      dispatch(
+        addEmployeeInfo({
+          name: name,
+          email: email,
+          role: role,
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      dispatch(unsetLastAddedEmployeeId());
+    };
+  }, [1]);
+
+  useEffect(() => {
+    if (lastAddedEmployeeId > 0) {
+      history.push("/employee/" + lastAddedEmployeeId);
+    }
+  }, [lastAddedEmployeeId]);
+
+  return (
+    <div className="c-default-layout flex-row align-items-center">
+      <CRow className="justify-content-center">
+        <CCol md="9" lg="7" xl="6">
+          <CCard className="mx-4">
+            <CCardBody className="p-4">
+              <CForm>
+                <h1>Add New Employee</h1>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-user" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput
+                    type="text"
+                    placeholder="Name"
+                    autoComplete="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-envelope-closed" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput
+                    type="text"
+                    placeholder="Email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-lock-locked" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CSelect
+                    type="text"
+                    placeholder="Role"
+                    autoComplete="role"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                  >
+                    {renderEmployeeOptions()}
+                  </CSelect>
+                </CInputGroup>
+                <CButton
+                  color={waitForServer ? "secondary" : "primary"}
+                  block
+                  onClick={saveEmployeeInfo}
+                >
+                  Add{" "}
+                  <CSpinner
+                    hidden={waitForServer !== true}
+                    color="success"
+                    size="sm"
+                  ></CSpinner>
+                </CButton>
+              </CForm>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+    </div>
+  );
+};
+
+export default Employee;
