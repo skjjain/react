@@ -10,7 +10,7 @@ export const UNSET_LAST_ADDED_EMPLOYEE_ID = "UNSET_LAST_ADDED_EMPLOYEE_ID";
 export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";
 export const EMPLOYEE_ERROR = "EMPLOYEE_ERROR";
 
-//common
+// common
 export const USER_LOGIN = "USER_LOGIN";
 export const USER_LOGOUT = "USER_LOGOUT";
 export const CHECK_LOGIN = "CHECK_LOGIN";
@@ -30,3 +30,6 @@ export const UNSET_LAST_ADDED_REVIEW_ID = "UNSET_LAST_ADDED_REVIEW_ID";
 export const DELETE_REVIEW = "DELETE_REVIEW";
 export const SUBMIT_REVIEW = "SUBMIT_REVIEW";
 export const REVIEW_ERROR = "REVIEW_ERROR";
+
+// auth
+export const SET_PERMISSIONS = "SET_PERMISSIONS";

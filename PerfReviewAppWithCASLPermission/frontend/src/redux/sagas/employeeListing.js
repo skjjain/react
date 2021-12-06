@@ -88,7 +88,11 @@ export function* userLogin(param) {
     );
     yield put({
       type: constants.SET_LOGIN_STATUS,
-      json: json,
+      payload: { ...json },
+    });
+    yield put({
+      type: constants.SET_PERMISSIONS,
+      payload: { ...json },
     });
   } catch (error) {
     yield put({ type: constants.EMPLOYEE_ERROR, error: error, isError: true });
@@ -102,7 +106,11 @@ export function* checkLogin(param) {
     });
     yield put({
       type: constants.SET_LOGIN_STATUS,
-      json: json,
+      payload: { ...json },
+    });
+    yield put({
+      type: constants.SET_PERMISSIONS,
+      payload: { ...json },
     });
   } catch (error) {
     yield put({ type: constants.EMPLOYEE_ERROR, error: error, isError: true });
@@ -116,7 +124,7 @@ export function* userLogout(param) {
     });
     yield put({
       type: constants.SET_LOGIN_STATUS,
-      json: json,
+      payload: json,
     });
   } catch (error) {
     yield put({ type: constants.EMPLOYEE_ERROR, error: error, isError: true });

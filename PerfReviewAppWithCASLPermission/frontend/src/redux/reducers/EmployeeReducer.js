@@ -68,7 +68,7 @@ const EmployeeReducers = (state = {}, action) => {
     case constants.SET_LOGIN_STATUS:
       return {
         ...state,
-        loginStatus: action.json.data,
+        loginStatus: action.payload.data,
         waitForServer: false,
         isError: false,
       };

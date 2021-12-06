@@ -18,6 +18,11 @@ app.use(
   })
 );
 
+const user_permissions = {
+  1: [{ action: "view", object: "employees", permission: true }],
+  2: [{ action: "view", object: "employees", permission: false }],
+};
+
 var secretKey = "thisisasecretkey";
 app.use(
   session({
@@ -104,6 +109,7 @@ app.post("/login", function (req, res, next) {
             role: user.role,
             emp_id: user.emp_id,
             name: user.name,
+            permissions: user_permissions[user.role],
           })
         );
       });
@@ -112,7 +118,7 @@ app.post("/login", function (req, res, next) {
 });
 
 app.get("/login", function (req, res) {
-  res.send(req.user);
+  res.send({ ...req.user, permissions: user_permissions[req.user.role] });
 });
 
 app.get("/logout", function (req, res) {
