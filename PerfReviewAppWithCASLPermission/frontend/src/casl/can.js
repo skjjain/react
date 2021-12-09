@@ -3,8 +3,8 @@ import store from "../redux/store";
 import { Redirect } from "react-router-dom";
 const ability = new Ability();
 
-export function ProtectedComponent(props) {
-  if (ability.can(props.action, props.subject)) {
+export function Can(props) {
+  if (ability.can(props.I, props.A)) {
     return props.children;
   } else {
     return "";
@@ -31,10 +31,10 @@ const defineRulesFor = (auth) => {
   // server sends you the permissions array
   if (permissions) {
     permissions.forEach((p) => {
-      if (p.permission) {
-        can(p.action, p.object);
+      if (p.can) {
+        can(p.i, p.a);
       } else {
-        cannot(p.action, p.object);
+        cannot(p.i, p.a);
       }
     });
   }

@@ -10,7 +10,7 @@ import {
   CBreadcrumbRouter,
   CButton,
 } from "@coreui/react";
-import { ProtectedComponent } from "../casl/can";
+import { Can } from "../casl/can";
 
 // routes config
 import routes from "../routes";
@@ -51,20 +51,20 @@ const TheHeader = () => {
   return (
     <CHeader withSubheader style={{ justifyContent: "flex-end" }}>
       <CHeaderNav className="mr-auto">
-        <ProtectedComponent action="view" subject="employees">
+        <Can I="view" A="employees">
           <Test action="view" subject="employees">
             <CHeaderNavItem className="px-3">
               <CHeaderNavLink to="/employees">Employees</CHeaderNavLink>
             </CHeaderNavItem>
           </Test>
-        </ProtectedComponent>
-        <ProtectedComponent action="view" subject="reviews">
+        </Can>
+        <Can I="view" A="reviews">
           <Test action="view" subject="reviews">
             <CHeaderNavItem className="px-3">
               <CHeaderNavLink to="/reviews">Reviews</CHeaderNavLink>
             </CHeaderNavItem>
           </Test>
-        </ProtectedComponent>
+        </Can>
       </CHeaderNav>
 
       <CHeaderNav className="px-3">

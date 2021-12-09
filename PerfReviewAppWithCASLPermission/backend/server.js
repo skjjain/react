@@ -20,16 +20,16 @@ app.use(
 
 const user_permissions = {
   1: [
-    { action: "view", object: "employees", permission: true },
-    { action: "route", object: "/employees", permission: true },
-    { action: "view", object: "reviews", permission: true },
-    { action: "route", object: "/reviews", permission: true },
+    { can: true, i: "view", a: "employees" },
+    { can: true, i: "route", a: "/employees" },
+    { can: true, i: "view", a: "reviews", can: true },
+    { can: true, i: "route", a: "/reviews", can: true },
   ],
   2: [
-    { action: "view", object: "employees", permission: false },
-    { action: "route", object: "/employees", permission: false },
-    { action: "view", object: "reviews", permission: true },
-    { action: "route", object: "/reviews", permission: true },
+    { can: false, i: "view", a: "employees" },
+    { can: false, i: "route", a: "/employees" },
+    { can: true, i: "view", a: "reviews" },
+    { can: true, i: "route", a: "/reviews" },
   ],
 };
 
