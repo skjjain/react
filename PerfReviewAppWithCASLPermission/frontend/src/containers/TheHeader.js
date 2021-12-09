@@ -35,7 +35,6 @@ const TheHeader = () => {
   useState(() => {}, [AuthReducer]);
 
   useEffect(() => {
-    console.log(31, loginStatus);
     if (loginStatus && loginStatus.success) {
       if (loginStatus.role == 2 && location.pathname.startsWith("/employee")) {
         //history.push("/reviews");
