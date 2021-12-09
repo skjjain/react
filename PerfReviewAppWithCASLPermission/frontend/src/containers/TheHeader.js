@@ -10,11 +10,18 @@ import {
   CBreadcrumbRouter,
   CButton,
 } from "@coreui/react";
-import CAN from "../casl/can";
+import { ProtectedComponent } from "../casl/can";
 
 // routes config
 import routes from "../routes";
 import { userLogout } from "src/redux/actions";
+
+const Test = (props) => {
+  useEffect(() => {
+    console.log("This should not be called for blocked components", props);
+  }, []);
+  return props.children;
+};
 
 const TheHeader = () => {
   const location = useLocation();
@@ -31,7 +38,7 @@ const TheHeader = () => {
     console.log(31, loginStatus);
     if (loginStatus && loginStatus.success) {
       if (loginStatus.role == 2 && location.pathname.startsWith("/employee")) {
-        history.push("/reviews");
+        //history.push("/reviews");
       }
     } else {
       history.push("/login");
@@ -45,14 +52,20 @@ const TheHeader = () => {
   return (
     <CHeader withSubheader style={{ justifyContent: "flex-end" }}>
       <CHeaderNav className="mr-auto">
-        {CAN("view", "employees") && (
-          <CHeaderNavItem className="px-3">
-            <CHeaderNavLink to="/employees">Employees</CHeaderNavLink>
-          </CHeaderNavItem>
-        )}
-        <CHeaderNavItem className="px-3">
-          <CHeaderNavLink to="/reviews">Reviews</CHeaderNavLink>
-        </CHeaderNavItem>
+        <ProtectedComponent action="view" subject="employees">
+          <Test action="view" subject="employees">
+            <CHeaderNavItem className="px-3">
+              <CHeaderNavLink to="/employees">Employees</CHeaderNavLink>
+            </CHeaderNavItem>
+          </Test>
+        </ProtectedComponent>
+        <ProtectedComponent action="view" subject="reviews">
+          <Test action="view" subject="reviews">
+            <CHeaderNavItem className="px-3">
+              <CHeaderNavLink to="/reviews">Reviews</CHeaderNavLink>
+            </CHeaderNavItem>
+          </Test>
+        </ProtectedComponent>
       </CHeaderNav>
 
       <CHeaderNav className="px-3">

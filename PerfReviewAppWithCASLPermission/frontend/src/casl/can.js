@@ -1,11 +1,23 @@
 import { Ability, AbilityBuilder } from "@casl/ability";
 import store from "../redux/store";
-
+import { Redirect } from "react-router-dom";
 const ability = new Ability();
 
-export default (action, subject) => {
-  return ability.can(action, subject);
-};
+export function ProtectedComponent(props) {
+  if (ability.can(props.action, props.subject)) {
+    return props.children;
+  } else {
+    return "";
+  }
+}
+
+export function ProtectedRoute(props) {
+  if (ability.can("route", props.path)) {
+    return props.children;
+  } else {
+    return <Redirect path="/" />;
+  }
+}
 
 store.subscribe(() => {
   let auth = store.getState().AuthReducers;

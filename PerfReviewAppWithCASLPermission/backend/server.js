@@ -19,8 +19,18 @@ app.use(
 );
 
 const user_permissions = {
-  1: [{ action: "view", object: "employees", permission: true }],
-  2: [{ action: "view", object: "employees", permission: false }],
+  1: [
+    { action: "view", object: "employees", permission: true },
+    { action: "route", object: "/employees", permission: true },
+    { action: "view", object: "reviews", permission: true },
+    { action: "route", object: "/reviews", permission: true },
+  ],
+  2: [
+    { action: "view", object: "employees", permission: false },
+    { action: "route", object: "/employees", permission: false },
+    { action: "view", object: "reviews", permission: true },
+    { action: "route", object: "/reviews", permission: true },
+  ],
 };
 
 var secretKey = "thisisasecretkey";

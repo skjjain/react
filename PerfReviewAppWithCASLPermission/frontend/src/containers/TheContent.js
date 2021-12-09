@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 // routes config
 import routes from "../routes";
+import { ProtectedRoute } from "../casl/can";
 
 const loading = (
   <div className="pt-3 text-center">
@@ -30,7 +31,9 @@ const TheContent = () => {
                     name={route.name}
                     render={(props) => (
                       <CFade>
-                        <route.component {...props} />
+                        <ProtectedRoute path={route.path}>
+                          <route.component {...props} />
+                        </ProtectedRoute>
                       </CFade>
                     )}
                   />
