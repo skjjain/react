@@ -21,6 +21,7 @@ app.use(
 const user_permissions = {
   1: [
     { can: true, i: "view", a: "employees" },
+    { can: true, i: "route", a: "/employee/add" },
     { can: true, i: "route", a: "/employees" },
     { can: true, i: "view", a: "reviews", can: true },
     { can: true, i: "route", a: "/reviews", can: true },
